@@ -14,12 +14,18 @@ struct Node* newnode(int k){
     return node;
 }
 
-
+void inorder(struct Node *root){
+    if(root != NULL){
+        inorder(root->right);
+        cout << root->key << " ";
+        inorder(root->right);
+    }
+}
 
 bool isFullBInaryTree(struct Node *root){
     if(root == NULL)
     return true;
-    if((root->left) && (root->right) == NULL)
+    if((root->left == NULL) && (root->right == NULL))
     return true;
     if((root->left) && (root->right))
     return isFullBInaryTree(root->left) && isFullBInaryTree(root->right);
