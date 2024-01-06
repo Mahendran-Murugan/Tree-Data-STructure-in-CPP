@@ -16,10 +16,11 @@ struct Node* newnode(int k){
 
 void inorder(struct Node *root){
     if(root != NULL){
-        inorder(root->right);
+        inorder(root->left);
         cout << root->key << " ";
         inorder(root->right);
     }
+    return;
 }
 
 bool isFullBInaryTree(struct Node *root){
@@ -39,12 +40,14 @@ int main(){
     root->right = newnode(3);
     root->left->left = newnode(4);
     root->left->right = newnode(5);
-    root->left->right->left = newnode(6);
-    root->left->right->right = newnode(7);
+    root->right->left = newnode(6);
+    root->right->right = newnode(7);
     if(isFullBInaryTree(root)){
         cout << "It is Full Binary Tree" <<endl;
     }else{
         cout << "It is not Full Binary Tree" <<endl;
     }
+    inorder(root);
+    cout << endl;
     return 0;
 }
